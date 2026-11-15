@@ -14,6 +14,20 @@
 | `SHA256SUMS.txt` | 全部成品的校验值 |
 | `update.json` | 官方自更新格式的版本清单 |
 
+从本仓库下载（不必 clone 整个仓库）：打开 `dist/` 目录，点开文件后选 **Download raw file**，或直接用浏览器访问：
+
+- `https://github.com/LG1987/BrimDeck-01/raw/main/dist/BrimDeck-1.3.2-Setup.exe`
+- `https://github.com/LG1987/BrimDeck-01/raw/main/dist/BrimDeck-1.3.2-Portable-x64.zip`
+
+下载后先核对校验值再运行：
+
+```powershell
+Get-FileHash .\BrimDeck-1.3.2-Setup.exe -Algorithm SHA256
+# 将结果与 dist/SHA256SUMS.txt 中的值比对
+```
+
+> 两个成品超过 GitHub 建议的 50 MB，推送时会有 Large files 警告，但都低于 100 MB 硬上限，文件已完整入库。若要长期分发，建议改用 GitHub Release 附件（本仓库已打 `v1.3.2` tag）。
+
 - 安装包的 `AppId` 与官方 v1.3.1 相同，安装会**替换**已装的官方 1.3.1，并保留 `%LOCALAPPDATA%\BrimDeck` 里的设置与数据；卸载也从「应用 → BrimDeck」走。
 - 安装包**没有数字签名**（与官方一致），首次手动运行会看到 SmartScreen 提示，点「更多信息 → 仍要运行」。
 - **建议关闭应用内的更新检查**：本 fork 仍会向官方仓库 `MoFeng2223/BrimDeck` 检查新版本，官方发布新版时可能把这个改动覆盖掉。设置里关掉更新检查即可。
